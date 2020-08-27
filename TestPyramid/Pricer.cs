@@ -7,12 +7,11 @@ namespace TestPyramid
 {
     internal class Pricer
     {
-        private static HttpClient _client = new HttpClient();
         public static Movie Price(string imdbId)
         {
             async Task<ImdbMovie> Json()
             {
-                HttpResponseMessage response = await _client.GetAsync("http://www.omdbapi.com/?i=" + imdbId + "&apikey=6487ec62");
+                HttpResponseMessage response = await new HttpClient().GetAsync("http://www.omdbapi.com/?i=" + imdbId + "&apikey=6487ec62");
 
                 response.EnsureSuccessStatusCode();
 
